@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socket.IO Example</title>
+  </head>
+  <body>
+    <h1>Socket.IO Example</h1>
+    <ul id="log"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.min.js"></script>
+    <script>
+      const socket = io("http://localhost:3000/");
+
+      socket.on("log", function (msg) {
+        console.log(msg);
+        const logElement = document.createElement("li");
+        logElement.textContent = msg;
+        document.getElementById("log").appendChild(logElement);
+      });
+    </script>
+  </body>
+</html>
