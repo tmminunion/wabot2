@@ -23,7 +23,7 @@ async function takessw(iddna) {
 
   // Mengatur viewport sesuai dengan tinggi konten halaman
   await page.setViewport({
-    width: 375, // Anda dapat mengatur lebar sesuai kebutuhan
+    width: 800, // Anda dapat mengatur lebar sesuai kebutuhan
     height: contentHeight + 20, // Mengatur tinggi sesuai dengan tinggi konten halaman
     deviceScaleFactor: 1,
   });

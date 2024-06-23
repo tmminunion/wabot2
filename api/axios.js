@@ -116,7 +116,7 @@ function stopInterval() {
 let socket;
 
 function connectSocketWithToken() {
-  socket = io("https://bt-api.bungtemin.net", {
+  socket = io("https://socket.bungtemin.net", {
     auth: {
       token: process.env.API_KEY_WEBSOCKET, // Menggunakan token dari response Axios
     },
@@ -156,7 +156,7 @@ onValue(starCountRef, (snapshot) => {
   const data = snapshot.val();
   console.log("data fiurebase", data);
 });
-
+ startInterval();
 // Ekspor fetchDelete dan fetchData sebagai properti dari objek default
 module.exports = {
   fetchAPI: fetchAPI,

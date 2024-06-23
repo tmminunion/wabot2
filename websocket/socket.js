@@ -6,7 +6,7 @@ const io = require("socket.io-client");
 let socket;
 
 function connectSocketWithToken(token) {
-  socket = io("https://bt-api.bungtemin.net", {
+  socket = io("https://socket.bungtemin.net", {
     auth: {
       token: token, // Menggunakan token dari response Axios
     },
