@@ -112,42 +112,6 @@ function stopInterval() {
   isIntervalRunning = false;
 }
 
-// Inisialisasi variabel socket di luar fungsi sehingga dapat diakses secara global
-let socket;
-
-function connectSocketWithToken() {
-  socket = io("https://socket.bungtemin.net", {
-    auth: {
-      token: process.env.API_KEY_WEBSOCKET, // Menggunakan token dari response Axios
-    },
-  });
-
-  socket.on("connect", () => {
-    console.log("Connected to server with socket id:", socket.id);
-  });
-
-  socket.on("lampuStatus", (status) => {
-    console.log("Status lampu:", status);
-    if (status == "On") {
-      console.log("ada perintah ON");
-      startInterval();
-    } else {
-      console.log("ada perintah OFF");
-      stopInterval();
-    }
-  });
-
-  socket.on("connect_error", (err) => {
-    console.log(err.data); // { content: "Please retry later" }
-  });
-
-  socket.on("disconnect", () => {
-    console.log("Disconnected from server");
-  });
-}
-
-connectSocketWithToken();
-
 const { dbta } = require("../service/firebase");
 const { getDatabase, ref, onValue } = require("firebase/database");
 
@@ -156,7 +120,7 @@ onValue(starCountRef, (snapshot) => {
   const data = snapshot.val();
   console.log("data fiurebase", data);
 });
- startInterval();
+startInterval();
 // Ekspor fetchDelete dan fetchData sebagai properti dari objek default
 module.exports = {
   fetchAPI: fetchAPI,
